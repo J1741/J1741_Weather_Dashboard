@@ -1,0 +1,10 @@
+body {
+  background-color: whitesmoke;
+}
+
+h1 {
+  background-color: cornflowerblue;
+  color: whitesmoke;
+  text-align: center;
+  padding: 10px;
+}
