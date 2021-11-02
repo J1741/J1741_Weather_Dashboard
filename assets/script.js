@@ -6,11 +6,6 @@ const testingElement = document.getElementById('testing-element');
 const apiKey = 'a903e090203cb951093bb90d5f213895';
 const searchHistory = [];
 
-// helper function to convert K to F
-function k2F(tempK) {
-	return Math.floor((tempK - 273.15) * 1.8 + 32);
-}
-
 // gets current weather, uv index, and 5-day forecast
 function getOpenWeatherData (requestedCity) {
   
