@@ -1,8 +1,9 @@
 // global variables 
 const searchButton = document.getElementById('search-button');
 const cityInput = document.getElementById('city-input');
-// ** testing element **
+// ** testing elements **
 const testingElement = document.getElementById('testing-element');
+const testingImgElement = document.getElementById('testing-image'); 
 const apiKey = 'a903e090203cb951093bb90d5f213895';
 const searchHistory = [];
 
@@ -16,12 +17,18 @@ function getOpenWeatherData (requestedCity) {
       return response.json();
     })
     .then(function (data) {
-    console.log("** current weather data is: **\n", data);
+    // console.log("** current weather data is: **\n", data);
 
       // get current city
       let currentCity = data.name;
       console.log("currentCity is:", currentCity);
 
+      // get current weather icon
+      let currentIcon = data.weather[0].icon;
+      console.log("currentIcon is:", currentIcon);
+      let currentIconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+      console.log(currentIconUrl);
+      
       // get current date
       let currentDate = new Date(
         data.dt * 1000
@@ -34,6 +41,8 @@ function getOpenWeatherData (requestedCity) {
 
       // ** TEST ** adding date to testing element
       testingElement.innerHTML = `Date: ${currentMonth}/${currentDay}/${currentYear}`;
+      console.log(testingImgElement);
+      testingImgElement.setAttribute("src", currentIconUrl);
 
       // get current temp in F, wind in mph, and humidity
       let currentTemp = Math.round(data.main.temp); 
@@ -57,7 +66,7 @@ function getOpenWeatherData (requestedCity) {
         return response.json()
       })
       .then(function (data) {
-        console.log("** current uvi data is: **\n", data);
+        // console.log("** current uvi data is: **\n", data);
         let currentUvi = data.current.uvi
         console.log("currentUvi is:", currentUvi);
         console.log("----")        
@@ -70,9 +79,14 @@ function getOpenWeatherData (requestedCity) {
           return response.json()
         })
         .then(function (data) {
-        console.log("** forecast data is: **\n", data);
+        // console.log("** forecast data is: **\n", data);
 
-          // get day 1 weather
+          // get day 1 weather 
+          let day1Icon = data.daily[1].weather[0].icon;
+          console.log("day1Icon is:", day1Icon);
+          let day1IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          console.log(day1IconUrl);
+
           let day1Date = new Date(
             data.daily[1].dt * 1000
           );
@@ -94,6 +108,11 @@ function getOpenWeatherData (requestedCity) {
           console.log("----");
 
           // get day 2 weather
+          let day2Icon = data.daily[2].weather[0].icon;
+          console.log("day2Icon is:", day2Icon);
+          let day2IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          console.log(day2IconUrl);
+
           let day2Date = new Date(
             data.daily[2].dt * 1000
           );
@@ -115,6 +134,11 @@ function getOpenWeatherData (requestedCity) {
           console.log("----");
 
           // get day 3 weather
+          let day3Icon = data.daily[3].weather[0].icon;
+          console.log("day3Icon is:", day3Icon);
+          let day3IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          console.log(day3IconUrl);
+
           let day3Date = new Date(
             data.daily[3].dt * 1000
           );
@@ -136,6 +160,11 @@ function getOpenWeatherData (requestedCity) {
           console.log("----");
 
           // get day 4 weather
+          let day4Icon = data.daily[4].weather[0].icon;
+          console.log("day4Icon is:", day4Icon);
+          let day4IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          console.log(day4IconUrl);
+
           let day4Date = new Date(
             data.daily[4].dt * 1000
           );
@@ -157,6 +186,11 @@ function getOpenWeatherData (requestedCity) {
           console.log("----");
 
           // get day 5 weather
+          let day5Icon = data.daily[5].weather[0].icon;
+          console.log("day5Icon is:", day5Icon);
+          let day5IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          console.log(day5IconUrl);
+
           let day5Date = new Date(
             data.daily[5].dt * 1000
           );
