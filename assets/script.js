@@ -12,7 +12,7 @@ function k2F(tempK) {
 // gets current weather, uv index, and 5-day forecast
 function getOpenWeatherData (requestedCity) {
 
-  let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + requestedCity + '&appid=a903e090203cb951093bb90d5f213895'
+  let requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&appid=${apiKey}`
 
   // get current weather for city
   fetch(requestUrl)
@@ -80,6 +80,6 @@ searchButton.addEventListener('click', function(event) {
   getOpenWeatherData(requestedCity);
 
   searchHistory.push(requestedCity);
-  localStorage.setItem("city", JSON.stringify(searchHistory));
+  localStorage.setItem("",JSON.stringify(searchHistory));
 });
   
