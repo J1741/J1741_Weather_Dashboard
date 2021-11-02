@@ -12,3 +12,8 @@ h1 {
 #city-input {
   max-width: 25vw;
 }
+
+#testing-element {
+  color: chartreuse;
+  background-color: black;
+}

@@ -15,7 +15,8 @@ function k2F(tempK) {
 function getOpenWeatherData (requestedCity) {
   
   // get current weather for city
-  let requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&appid=${apiKey}`
+  // let requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&appid=${apiKey}`
+  let requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&units=imperial&appid=${apiKey}`
 
   fetch(requestUrl)
     .then(function (response) {
@@ -24,7 +25,7 @@ function getOpenWeatherData (requestedCity) {
       return response.json();
     })
     .then(function (data) {
-      console.log("** data is: **\n", data);
+      console.log("** current weather data is: **\n", data);
       console.log("data.name")
 
       // format date from api call
@@ -32,38 +33,53 @@ function getOpenWeatherData (requestedCity) {
         data.dt * 1000
       );
 
+      // get current city
+      let currentCity = data.name;
+
       // get current year, month, and date
       let currentYear = currentDate.getFullYear();
       let currentMonth = currentDate.getMonth() + 1;
       let currentDay = currentDate.getDate();
 
-      // ** TEST ** adding date to element
-      testingElement.innerHTML = `${currentMonth}/${currentDay}/${currentYear}`;
+      // ** TEST ** adding date to testing element
+      testingElement.innerHTML = `Date: ${currentMonth}/${currentDay}/${currentYear}`;
+
+      // get current temp in F
+      console.log("currentTemp is: ", data.main.temp);
+      
+      // get current wind in mph
+
+      // get current humidity
 
       // get latitude and longitude from api call
       let cityLat = data.coord.lat;
       let cityLon = data.coord.lon;
 
       // get uv index for city
-      let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&appid=${apiKey}&cnt=1`
+      // let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&appid=${apiKey}&cnt=1`
+      let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&appid=${apiKey}&cnt=1`
 
       fetch(uviRequestUrl)
         .then(function (response) {
           return response.json()
         })
         .then(function (data) {
-          console.log("** data is: **\n", data);
+          console.log("** uv data is: **\n", data);
+
+          // log current uv index
+          console.log("** current uv index is:", data.current.uvi);
         })
       
       // get 5-day forecast for city
-      let fiveDayRequestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&appid=${apiKey}`
+      // let fiveDayRequestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&appid=${apiKey}`
+      let fiveDayRequestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&units=imperial&appid=${apiKey}`
 
       fetch(fiveDayRequestUrl)
         .then(function (response) {
           return response.json()
         })
         .then(function (data) {
-          console.log("** forecast data is: **\n", data)
+          console.log("** 5-day forecast data is: **\n", data)
         })
       
     })
