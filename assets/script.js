@@ -50,18 +50,17 @@ function getOpenWeatherData (requestedCity) {
 
       // get current wind in mph
       let currentWind = data.wind.speed;
-      console.log("current wind is:", currentWind);
+      console.log("currentWind is:", currentWind);
 
       // get current humidity
       let currentHumidity = data.main.humidity
-      console.log("current humidity is:", currentHumidity);
+      console.log("currentHumidity is:", currentHumidity);
 
       // get latitude and longitude from api call
       let cityLat = data.coord.lat;
       let cityLon = data.coord.lon;
 
       // get uv index for city
-      // let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&appid=${apiKey}&cnt=1`
       let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&appid=${apiKey}&cnt=1`
 
       fetch(uviRequestUrl)
@@ -75,7 +74,6 @@ function getOpenWeatherData (requestedCity) {
         })
       
       // get 5-day forecast for city
-      // let fiveDayRequestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&appid=${apiKey}`
       let fiveDayRequestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&units=imperial&appid=${apiKey}`
 
       fetch(fiveDayRequestUrl)
@@ -84,6 +82,13 @@ function getOpenWeatherData (requestedCity) {
         })
         .then(function (data) {
           console.log("** 5-day forecast data is: **\n", data)
+
+        // get day 1 weather
+        // get day 2 weather
+        // get day 3 weather
+        // get day 4 weather
+        // get day 5 weather
+
         })
       
     })
