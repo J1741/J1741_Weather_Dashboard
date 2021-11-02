@@ -9,15 +9,16 @@ const cityInput = document.getElementById('city-input');
 // }
 
 // **TESTING** hard-coded API call
-function getOpenWeatherData (event) {
+function getOpenWeatherData (requestedCity) {
+
+  let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + requestedCity + '&appid=a903e090203cb951093bb90d5f213895'
 
   // prevent page from reloading on click
-  event.preventDefault();
+  // event.preventDefault();
 
   // **hard-coded** request url
   // let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Louisville&appid=a903e090203cb951093bb90d5f213895'
 
-  let requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Louisville&appid=a903e090203cb951093bb90d5f213895'
 
   // get current weather for city
   fetch(requestUrl)
@@ -33,4 +34,9 @@ function getOpenWeatherData (event) {
   }
 
 // call getOpenWeatherData when search button clicked
-searchButton.addEventListener('click', getOpenWeatherData);
+searchButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  requestedCity = cityInput.value;
+  getOpenWeatherData(requestedCity);
+});
+  
