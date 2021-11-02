@@ -19,19 +19,39 @@
     <p id="testing-element"></p>
     <img id="testing-image" src="" />
 
-    <!-- search area -->
-    <div id="search-area" class="container">
-      <!-- search form -->
-      <form class="form">
-        <h2>Enter a city name:</h2>
-        <input type="text" class="form-control" id="city-input" name="q" />
-        <button id="search-button" class="btn btn-primary">Search</button>
-      </form>
-    </div>
+    <main>
+      <!-- app container -->
+      <div id="app-container" class="container-fluid d-flex w-100">
+        <!-- search area -->
+        <div id="search-area" class="d-flex">
+          <!-- search form -->
+          <form class="form">
+            <h2>Enter a city name:</h2>
+            <input type="text" class="form-control" id="city-input" name="q" />
+            <button id="search-button" class="btn btn-primary">Search</button>
+          </form>
+          <!-- search history -->
+          <div id="search-history"></div>
+        </div>
+        <div id="weather-area" class="container-fluid">
+          <!-- current weather area  -->
+          <div id="current-weather-area">
+            <div id="city-box" class="col">
+              <h3 id="city-info"></h3>
+              <img id="city-icon" src="" />
+              <p id="city-temp"></p>
+              <p id="city-wind"></p>
+              <p id="city-humidity"></p>
+              <p id="city-uvi"></p>
+            </div>
 
-    <!-- TODO: add card for main area-->
+          </div>
+          <!-- forecast area -->
+          <div id="forecast-area">
 
-    <!-- TODO: add cards for weather -->
+          </div>
+        </div>
+    </main>
 
     <script src="./assets/script.js"></script>
   </body>

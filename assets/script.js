@@ -1,10 +1,16 @@
 // global variables 
 const searchButton = document.getElementById('search-button');
 const cityInput = document.getElementById('city-input');
-// ** testing elements **
-const testingElement = document.getElementById('testing-element');
-const testingImgElement = document.getElementById('testing-image'); 
+
 const apiKey = 'a903e090203cb951093bb90d5f213895';
+
+const cityInfoEl = document.getElementById('city-info');
+const cityIconEl = document.getElementById('city-icon');
+const cityTempEl = document.getElementById('city-temp');
+const cityWindEl = document.getElementById('city-wind');
+const cityHumidityEl = document.getElementById('city-humidity');
+const cityUviEl = document.getElementById('city-uvi');
+
 const searchHistory = [];
 
 // gets current weather, uv index, and 5-day forecast
@@ -39,11 +45,6 @@ function getOpenWeatherData (requestedCity) {
       let currentMDY = `${currentMonth}/${currentDay}/${currentYear}`
       console.log("current MDY is:", currentMDY);
 
-      // ** TEST ** adding date to testing element
-      testingElement.innerHTML = `Date: ${currentMonth}/${currentDay}/${currentYear}`;
-      console.log(testingImgElement);
-      testingImgElement.setAttribute("src", currentIconUrl);
-
       // get current temp in F, wind in mph, and humidity
       let currentTemp = Math.round(data.main.temp); 
       console.log("currentTemp is: ", currentTemp);
@@ -55,10 +56,17 @@ function getOpenWeatherData (requestedCity) {
       console.log("currentHumidity is:", currentHumidity);
       console.log("----")        
 
+      // display current name, icon, temp, wind, and humidity 
+      cityInfoEl.innerHTML = `${currentCity} (${currentMDY})`;
+      cityIconEl.setAttribute("src", currentIconUrl);
+      cityTempEl.innerHTML = `Temp: ${currentTemp}ºF`
+      cityWindEl.innerHTML = `Wind: ${currentWind} MPH`
+      cityHumidityEl.innerHTML = `Humidity: ${currentHumidity} %`
+      
       // get latitude and longitude from api call
       let cityLat = data.coord.lat;
       let cityLon = data.coord.lon;
-
+      
       // get uvi index for city
       let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&exclude=minutely,hourly,alerts&appid=${apiKey}&cnt=1`
       fetch(uviRequestUrl)
@@ -70,6 +78,9 @@ function getOpenWeatherData (requestedCity) {
         let currentUvi = data.current.uvi
         console.log("currentUvi is:", currentUvi);
         console.log("----")        
+
+        // display current uv index
+        cityUviEl.innerHTML = `UV Index: ${currentUvi}`
       })
       
       // get 5-day forecast for city

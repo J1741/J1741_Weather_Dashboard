@@ -17,3 +17,26 @@ h1 {
   color: chartreuse;
   background-color: black;
 }
+
+#search-area, #current-weather-area, #forecast-area {
+  border-style: solid;
+  border-color: black;
+  border-width: 0.5px;
+}
+
+#current-weather-area, #forecast-area {
+  border-style: solid;
+  border-color: darkgreen;
+}
+
+#forecast-area {
+  border-style: solid;
+  border-color: mediumorchid;
+}
+
+/* column display on narrow viewports */
+@media screen and (max-width: 768px) {
+  #app-container {
+    flex-direction: column;  
+  }
+}
