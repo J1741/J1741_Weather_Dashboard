@@ -16,6 +16,7 @@ function getOpenWeatherData (requestedCity) {
       return response.json();
     })
     .then(function (data) {
+    console.log("** current weather data is: **\n", data);
 
       // get current city
       let currentCity = data.name;
@@ -56,7 +57,7 @@ function getOpenWeatherData (requestedCity) {
         return response.json()
       })
       .then(function (data) {
-        // console.log("** current uvi data is: **\n", data);
+        console.log("** current uvi data is: **\n", data);
         let currentUvi = data.current.uvi
         console.log("currentUvi is:", currentUvi);
         console.log("----")        
@@ -69,7 +70,7 @@ function getOpenWeatherData (requestedCity) {
           return response.json()
         })
         .then(function (data) {
-          // console.log("** 5-day forecast data is: **\n", data)
+        console.log("** forecast data is: **\n", data);
 
           // get day 1 weather
           let day1Date = new Date(
@@ -175,7 +176,6 @@ function getOpenWeatherData (requestedCity) {
           let day5Humidity = data.daily[5].humidity;
           console.log("day5Humidity is:", day5Humidity);
           console.log("----");
-
         })
       
     })
@@ -193,4 +193,3 @@ searchButton.addEventListener('click', function(event) {
   searchHistory.push(requestedCity);
   localStorage.setItem("",JSON.stringify(searchHistory));
 });
-  
