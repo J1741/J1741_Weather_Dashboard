@@ -22,20 +22,18 @@ function getOpenWeatherData (requestedCity) {
       console.log("** current weather data is: **\n", data);
 
       // get current city
-
       let currentCity = data.name;
       console.log("currentCity is", currentCity);
 
-      // format date from api call
+      // get current date
       let currentDate = new Date(
         data.dt * 1000
       );
-
-      // get current year, month, and date
       let currentYear = currentDate.getFullYear();
       let currentMonth = currentDate.getMonth() + 1;
       let currentDay = currentDate.getDate();
-      console.log(`current date is: ${currentMonth}/${currentDay}/${currentYear}`);
+      let currentMDY = `${currentMonth}/${currentDay}/${currentYear}`
+      console.log("current MDY is:", currentMDY);
 
       // ** TEST ** adding date to testing element
       testingElement.innerHTML = `Date: ${currentMonth}/${currentDay}/${currentYear}`;
@@ -57,9 +55,8 @@ function getOpenWeatherData (requestedCity) {
       let cityLat = data.coord.lat;
       let cityLon = data.coord.lon;
 
-
       // get uv index for city
-      let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&appid=${apiKey}&cnt=1`
+      let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&exclude=minutely,hourly,alerts&appid=${apiKey}&cnt=1`
 
       fetch(uviRequestUrl)
         .then(function (response) {
@@ -86,15 +83,21 @@ function getOpenWeatherData (requestedCity) {
         // Need: date, temp, wind, and humidity
 
         // get day 1 weather
-        console.log("** day 1 data is: **", data.list[0]);
+
+        // console.log("** day 1 data is: **", data.list[0]);
         // let day1Date = new Date(
         //   data.dt * 1000
         // );
 
-        let day1Temp = Math.round(data.list[0].main.temp); 
-        console.log("day1Temp is: ", day1Temp);
-        console.log("----")      
+        // let day1Date = new Date(); let day1Year = day1Date.getFullYear();
+        // let day1Month = day1Date.getMonth() + 1;
+        // let day1Day = day1Date.getDate();
+        // console.log(`day1 date is: ${day1Month}/${day1Day}/${day1Year}`);
 
+        let day1Temp = Math.round(data.list[1].main.temp); 
+        console.log("day1Temp is: ", day1Temp);
+        console.log("----");
+        
         // get day 2 weather
         let day2Temp = Math.round(data.list[1].main.temp); 
         console.log("day2Temp is: ", day2Temp);
