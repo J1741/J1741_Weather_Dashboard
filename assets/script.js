@@ -39,18 +39,22 @@ function getOpenWeatherData (requestedCity) {
       let currentYear = currentDate.getFullYear();
       let currentMonth = currentDate.getMonth() + 1;
       let currentDay = currentDate.getDate();
-      console.log(`current Date is: ${currentMonth}/${currentDay}/${currentYear}`);
+      console.log(`current date is: ${currentMonth}/${currentDay}/${currentYear}`);
 
       // ** TEST ** adding date to testing element
       testingElement.innerHTML = `Date: ${currentMonth}/${currentDay}/${currentYear}`;
 
       // get current temp in F
       let currentTemp = Math.round(data.main.temp); 
-      console.log("rounded currentTemp is: ", currentTemp);
+      console.log("currentTemp is: ", currentTemp);
 
       // get current wind in mph
+      let currentWind = data.wind.speed;
+      console.log("current wind is:", currentWind);
 
       // get current humidity
+      let currentHumidity = data.main.humidity
+      console.log("current humidity is:", currentHumidity);
 
       // get latitude and longitude from api call
       let cityLat = data.coord.lat;
@@ -65,10 +69,9 @@ function getOpenWeatherData (requestedCity) {
           return response.json()
         })
         .then(function (data) {
-          console.log("** uv data is: **\n", data);
-
-          // log current uv index
-          console.log("** current uv index is:", data.current.uvi);
+          console.log("** current uvi data is: **\n", data);
+          let currentUvi = data.current.uvi
+          console.log("currentUvi is:", currentUvi);
         })
       
       // get 5-day forecast for city
