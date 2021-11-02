@@ -1,6 +1,8 @@
 // global variables 
 const searchButton = document.getElementById('search-button');
 const cityInput = document.getElementById('city-input');
+// ** testing element **
+const testingElement = document.getElementById('testing-element');
 const apiKey = 'a903e090203cb951093bb90d5f213895';
 const searchHistory = [];
 
@@ -41,6 +43,10 @@ function getOpenWeatherData (requestedCity) {
       // get current year, month, and date
       let currentDay = currentDate.getDate();
       console.log("currentDay", currentDay);
+
+      // ** TEST ** adding date to element
+      // console.log(testingElement);
+      testingElement.innerHTML = `${currentMonth}/${currentDay}/${currentYear}`;
 
       // get lat and long from api call
       let cityLat = data.coord.lat;
