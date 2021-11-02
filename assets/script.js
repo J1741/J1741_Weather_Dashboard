@@ -15,7 +15,6 @@ function k2F(tempK) {
 function getOpenWeatherData (requestedCity) {
   
   // get current weather for city
-  // let requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&appid=${apiKey}`
   let requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&units=imperial&appid=${apiKey}`
 
   fetch(requestUrl)
@@ -26,27 +25,29 @@ function getOpenWeatherData (requestedCity) {
     })
     .then(function (data) {
       console.log("** current weather data is: **\n", data);
-      console.log("data.name")
+
+      // get current city
+      let currentCity = data.name;
+      console.log("currentCity is", currentCity);
 
       // format date from api call
       let currentDate = new Date(
         data.dt * 1000
       );
 
-      // get current city
-      let currentCity = data.name;
-
       // get current year, month, and date
       let currentYear = currentDate.getFullYear();
       let currentMonth = currentDate.getMonth() + 1;
       let currentDay = currentDate.getDate();
+      console.log(`current Date is: ${currentMonth}/${currentDay}/${currentYear}`);
 
       // ** TEST ** adding date to testing element
       testingElement.innerHTML = `Date: ${currentMonth}/${currentDay}/${currentYear}`;
 
       // get current temp in F
-      console.log("currentTemp is: ", data.main.temp);
-      
+      let currentTemp = Math.round(data.main.temp); 
+      console.log("rounded currentTemp is: ", currentTemp);
+
       // get current wind in mph
 
       // get current humidity
