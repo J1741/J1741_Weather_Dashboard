@@ -13,10 +13,10 @@ function k2F(tempK) {
 
 // gets current weather, uv index, and 5-day forecast
 function getOpenWeatherData (requestedCity) {
-
+  
+  // get current weather for city
   let requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${requestedCity}&appid=${apiKey}`
 
-  // get current weather for city
   fetch(requestUrl)
     .then(function (response) {
       // console.log("** response is: **\n", response);
@@ -34,28 +34,19 @@ function getOpenWeatherData (requestedCity) {
 
       // get current year, month, and date
       let currentYear = currentDate.getFullYear();
-      console.log("currentYear:", currentYear);
-
-      // get current year, month, and date
       let currentMonth = currentDate.getMonth() + 1;
-      console.log("currentMonth:", currentMonth);
-
-      // get current year, month, and date
       let currentDay = currentDate.getDate();
-      console.log("currentDay", currentDay);
 
       // ** TEST ** adding date to element
-      // console.log(testingElement);
       testingElement.innerHTML = `${currentMonth}/${currentDay}/${currentYear}`;
 
-      // get lat and long from api call
+      // get latitude and longitude from api call
       let cityLat = data.coord.lat;
       let cityLon = data.coord.lon;
 
-      // create request url to get uv index
+      // get uv index for city
       let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&appid=${apiKey}&cnt=1`
 
-      // get uv index
       fetch(uviRequestUrl)
         .then(function (response) {
           return response.json()
@@ -64,7 +55,7 @@ function getOpenWeatherData (requestedCity) {
           console.log("** data is: **\n", data);
         })
       
-      // get 5-day forecast
+      // get 5-day forecast for city
       let fiveDayRequestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&appid=${apiKey}`
 
       fetch(fiveDayRequestUrl)
@@ -82,9 +73,11 @@ function getOpenWeatherData (requestedCity) {
 searchButton.addEventListener('click', function(event) {
   event.preventDefault();
 
+  // set requested city
   requestedCity = cityInput.value;
   getOpenWeatherData(requestedCity);
 
+  // save requested city to local storage
   searchHistory.push(requestedCity);
   localStorage.setItem("",JSON.stringify(searchHistory));
 });
