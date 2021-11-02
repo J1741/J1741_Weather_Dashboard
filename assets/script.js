@@ -55,67 +55,61 @@ function getOpenWeatherData (requestedCity) {
       let cityLat = data.coord.lat;
       let cityLon = data.coord.lon;
 
-      // get uv index for city
+      // get uvi index for city
       let uviRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&exclude=minutely,hourly,alerts&appid=${apiKey}&cnt=1`
-
-      fetch(uviRequestUrl)
-        .then(function (response) {
-          return response.json()
-        })
-        .then(function (data) {
-          console.log("** current uvi data is: **\n", data);
-          let currentUvi = data.current.uvi
-          console.log("currentUvi is:", currentUvi);
-          console.log("----")        
-        })
       
-
+      fetch(uviRequestUrl)
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        console.log("** current uvi data is: **\n", data);
+        let currentUvi = data.current.uvi
+        console.log("currentUvi is:", currentUvi);
+        console.log("----")        
+      })
+      
+      
       // get 5-day forecast for city
-      let fiveDayRequestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${requestedCity}&units=imperial&appid=${apiKey}`
+      let oneRequestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=imperial&exclude=minutely,hourly,alerts&appid=${apiKey}&cnt=1`
 
-      fetch(fiveDayRequestUrl)
+      fetch(oneRequestUrl)
         .then(function (response) {
           return response.json()
         })
         .then(function (data) {
           console.log("** 5-day forecast data is: **\n", data)
 
-        // Need: date, temp, wind, and humidity
-
         // get day 1 weather
-
-        // console.log("** day 1 data is: **", data.list[0]);
-        // let day1Date = new Date(
-        //   data.dt * 1000
-        // );
-
-        // let day1Date = new Date(); let day1Year = day1Date.getFullYear();
-        // let day1Month = day1Date.getMonth() + 1;
-        // let day1Day = day1Date.getDate();
-        // console.log(`day1 date is: ${day1Month}/${day1Day}/${day1Year}`);
-
-        let day1Temp = Math.round(data.list[1].main.temp); 
-        console.log("day1Temp is: ", day1Temp);
-        console.log("----");
+        let day1Date = new Date(
+          data.daily[1].dt * 1000
+        );
         
-        // get day 2 weather
-        let day2Temp = Math.round(data.list[1].main.temp); 
-        console.log("day2Temp is: ", day2Temp);
-        console.log("----")        
+        let day1Year = day1Date.getFullYear();
+        let day1Month = day1Date.getMonth() + 1;
+        let day1Day = day1Date.getDate();
+        let day1MDY = `${day1Month}/${day1Day}/${day1Year}`
+        console.log('day1MDY is:', day1MDY);
 
-        // get day 3 weather
-        let day3Temp = Math.round(data.list[2].main.temp); 
-        console.log("day3Temp is: ", day3Temp);
-        console.log("----")        
+        let day1Temp = Math.round(data.daily[1].temp.day); 
+        console.log("day1Temp is:", day1Temp);
+        
+        let day1Wind = data.daily[1].wind_speed;
+        console.log("day1Wind is:", day1Wind);
 
-        // get day 4 weather
-        let day4Temp = Math.round(data.list[3].main.temp); 
-        console.log("day4Temp is: ", day4Temp);
-        console.log("----")        
+        let day1Humidity = data.daily[1].humidity;
+        console.log("day1Humidity is:", day1Humidity);
+        
+        console.log("----");
 
-        // get day 5 weather
-        let day5Temp = Math.round(data.list[4].main.temp); 
-        console.log("day5Temp is: ", day5Temp);
+        // // get day 2 weather
+
+        // // get day 3 weather
+
+        // // get day 4 weather
+
+        // // get day 5 weather
+
         })
       
     })
