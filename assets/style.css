@@ -13,28 +13,37 @@ h1 {
   max-width: 25vw;
 }
 
-#testing-element {
-  color: chartreuse;
-  background-color: black;
+#weather-area {
+  display: none;
 }
 
-#search-area, #current-weather-area, #forecast-area {
+#search-area {
   border-style: solid;
   border-color: black;
   border-width: 0.5px;
+  margin-bottom: 20px;
 }
 
-#current-weather-area, #forecast-area {
+#current-weather-area {
   border-style: solid;
-  border-color: darkgreen;
+  border-width: 0.5px;
+  background-color: lightskyblue;
+  margin-bottom: 20px;
 }
 
 #forecast-area {
   border-style: solid;
   border-color: mediumorchid;
+  margin-top: 10px;
 }
 
-/* column display on narrow viewports */
+/* add spacing in and around cards */
+#day1-card, #day2-card, #day3-card, #day4-card, #day5-card {
+  padding: 10px;
+  margin: 5px 10px;
+}
+
+/* switch to column display on narrow viewports */
 @media screen and (max-width: 768px) {
   #app-container {
     flex-direction: column;  
