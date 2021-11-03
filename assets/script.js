@@ -138,7 +138,7 @@ function getOpenWeatherData (requestedCity) {
           // get day1 icon 
           let day1Icon = data.daily[1].weather[0].icon;
           console.log("day1Icon is:", day1Icon);
-          let day1IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          let day1IconUrl = `http://openweathermap.org/img/wn/${day1Icon}%402x.png`
           console.log(day1IconUrl);
 
           // get day1 date
@@ -176,7 +176,7 @@ function getOpenWeatherData (requestedCity) {
           // get day2 icon
           let day2Icon = data.daily[2].weather[0].icon;
           console.log("day2Icon is:", day2Icon);
-          let day2IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          let day2IconUrl = `http://openweathermap.org/img/wn/${day2Icon}%402x.png`
           console.log(day2IconUrl);
 
           // get day2 date
@@ -214,7 +214,7 @@ function getOpenWeatherData (requestedCity) {
           // get day3 icon 
           let day3Icon = data.daily[3].weather[0].icon;
           console.log("day3Icon is:", day3Icon);
-          let day3IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          let day3IconUrl = `http://openweathermap.org/img/wn/${day3Icon}%402x.png`
           console.log(day3IconUrl);
 
           // get day3 date
@@ -252,7 +252,7 @@ function getOpenWeatherData (requestedCity) {
           // get day4 icon
           let day4Icon = data.daily[4].weather[0].icon;
           console.log("day4Icon is:", day4Icon);
-          let day4IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          let day4IconUrl = `http://openweathermap.org/img/wn/${day4Icon}%402x.png`
           console.log(day4IconUrl);
 
           // get day4 date
@@ -290,7 +290,7 @@ function getOpenWeatherData (requestedCity) {
           // get day5 icon
           let day5Icon = data.daily[5].weather[0].icon;
           console.log("day5Icon is:", day5Icon);
-          let day5IconUrl = `http://openweathermap.org/img/wn/${currentIcon}%402x.png`
+          let day5IconUrl = `http://openweathermap.org/img/wn/${day5Icon}%402x.png`
           console.log(day5IconUrl);
 
           // get day5 date
