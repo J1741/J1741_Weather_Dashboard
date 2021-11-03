@@ -9,10 +9,6 @@ h1 {
   padding: 10px;
 }
 
-#city-input {
-  /* max-width: 25vw; */
-}
-
 #weather-area {
   display: none;
 }
