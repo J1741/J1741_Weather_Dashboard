@@ -14,6 +14,7 @@ https://j1741.github.io/J1741_Weather_Dashboard
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Future Development](#future-development)
 - [Screenshots](#screenshots)
 - [Questions](#questions)
 
@@ -64,6 +65,15 @@ The 5-day forecast for city is displayed below current conditions, with a card c
 - Temperature (ºF)
 - Wind speed (MPH)
 - Humidity (%)
+
+Additionally, the application stores previously searched cities in Local Storage in an array with a key of `prevCity`, and console logs the history each time a new city's weather is searched.
+
+## Future Development
+
+Directions for future development include:
+
+- Displaying each city as button below the search form, such clicking a previously searched city's button will display that city's weather again
+- Adding a button to clear search history
 
 ## Contributing
 

@@ -14,8 +14,8 @@ h1 {
 }
 
 #search-area {
-  border-style: solid;
-  border-color: black;
+  /* border-style: solid; */
+  /* border-color: black; */
   border-width: 0.5px;
   margin-bottom: 20px;
 }
