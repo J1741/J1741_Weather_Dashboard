@@ -335,6 +335,7 @@ searchButton.addEventListener('click', function(event) {
 
   // save requested city to local storage
   searchHistory.push(requestedCity);
-  localStorage.setItem("",JSON.stringify(searchHistory));
+  localStorage.setItem("prevCity",JSON.stringify(searchHistory));
   console.log("search history is:", searchHistory);
+  console.log("localStorage is:", localStorage.getItem("prevCity"));
 });
