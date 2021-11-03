@@ -10,7 +10,7 @@ h1 {
 }
 
 #city-input {
-  max-width: 25vw;
+  /* max-width: 25vw; */
 }
 
 #weather-area {
@@ -32,8 +32,8 @@ h1 {
 }
 
 #forecast-area {
-  border-style: solid;
-  border-color: mediumorchid;
+  /* border-style: solid; */
+  /* border-color: mediumorchid; */
   margin-top: 10px;
 }
 
@@ -41,11 +41,18 @@ h1 {
 #day1-card, #day2-card, #day3-card, #day4-card, #day5-card {
   padding: 10px;
   margin: 5px 10px;
+  min-width: 150px;
 }
 
 /* switch to column display on narrow viewports */
 @media screen and (max-width: 768px) {
   #app-container {
     flex-direction: column;  
+  }
+}
+
+@media screen and (max-width: 1044px) {
+  h4 {
+    text-align: center;
   }
 }
