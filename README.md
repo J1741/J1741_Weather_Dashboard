@@ -15,8 +15,8 @@ https://j1741.github.io/J1741_Weather_Dashboard
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Future Development](#future-development)
-- [Screenshots](#screenshots)
 - [Questions](#questions)
+- [Screenshots](#screenshots)
 
 ## Installation
 
@@ -81,16 +81,14 @@ Contributions to the Weather Dashboard project are welcome!
 
 The project repo can be forked here: https://github.com/J1741/J1741_Weather_Dashboard
 
-## Screenshots
-
-The following screenshots illustrate the deployed application in mobile and desktop view:
-
---> to-be added
-
---> to-be added
-
 ## Questions
 
 Questions and inquiries about the Weather Dashboard project can be directed to the developer via GitHub: https://github.com/J1741
 
 Or via email: jseventeen41@gmail.com
+
+## Screenshots
+
+The following screenshots illustrate the deployed application in desktop and mobile-friendly views:
+![Alt text](./screenshot_desktop.png?raw=true "Screenshot of desktop view")
+![Alt text](./screenshot_mobile.png?raw=true "Screenshot of mobile-friendly view")
